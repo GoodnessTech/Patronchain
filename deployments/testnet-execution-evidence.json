@@ -1,0 +1,60 @@
+{
+  "testDate": "2026-10-28T12:40:40.557Z",
+  "network": "BOT Chain Testnet (Bohr)",
+  "chainId": 968,
+  "contractAddress": "0xb1ceb34818617a5b59c0d6ca98e2c4481b8a845f",
+  "deployerCreator": "0x34090545BD562b0bE1Cdc855F7cA9beE4566CE51",
+  "supporter": "0x6f076b14D59040BcEe83606fcEcc38F4D056866b",
+  "transactions": {
+    "fundingSupporter": {
+      "hash": "0xeb0c847e5e77eec885f06712d2741b36c9cec7af5c3b4ba8c570ae463a126676",
+      "explorer": "https://scan.bohr.life/tx/0xeb0c847e5e77eec885f06712d2741b36c9cec7af5c3b4ba8c570ae463a126676"
+    },
+    "creatorRegistration": {
+      "hash": "0x8b3a3a458e6eade893dd8d475fbdd47e82a3e717b549e5b2d3adfa4181b379c2",
+      "explorer": "https://scan.bohr.life/tx/0x8b3a3a458e6eade893dd8d475fbdd47e82a3e717b549e5b2d3adfa4181b379c2"
+    },
+    "tier1Creation": {
+      "hash": "0x32b884ab4423e6ab28408d61fc582d83ae333d28f629da3ab6b30bb59ffc81bb",
+      "explorer": "https://scan.bohr.life/tx/0x32b884ab4423e6ab28408d61fc582d83ae333d28f629da3ab6b30bb59ffc81bb"
+    },
+    "tier2Creation": {
+      "hash": "0x758f86bb216bf9e1a66f4bce99c4a81556e2a460d7e4221201c62b9806b4d994",
+      "explorer": "https://scan.bohr.life/tx/0x758f86bb216bf9e1a66f4bce99c4a81556e2a460d7e4221201c62b9806b4d994"
+    },
+    "subscription": {
+      "hash": "0x903d6271f625bdf36b9d6ef38f2cb27ef0e9cee96fd24fd313bab7844f906ac2",
+      "explorer": "https://scan.bohr.life/tx/0x903d6271f625bdf36b9d6ef38f2cb27ef0e9cee96fd24fd313bab7844f906ac2"
+    },
+    "renewal": {
+      "hash": "0x4d5fcee1e0dcf48c3420a0fb64d05834052d315fe474a17f9b32e8563cf8a8d6",
+      "explorer": "https://scan.bohr.life/tx/0x4d5fcee1e0dcf48c3420a0fb64d05834052d315fe474a17f9b32e8563cf8a8d6"
+    },
+    "upgrade": {
+      "hash": "0x9acc4f81e89b48e3a85fd9e68a594bf2ebbcad702d928d6b467ebf9ac1e931e0",
+      "explorer": "https://scan.bohr.life/tx/0x9acc4f81e89b48e3a85fd9e68a594bf2ebbcad702d928d6b467ebf9ac1e931e0"
+    },
+    "cancellation": {
+      "hash": "0xdf7b182fda1db4caeabd50e955e8de9750ee81f4e9afc45f1f44fc09aac32186",
+      "explorer": "https://scan.bohr.life/tx/0xdf7b182fda1db4caeabd50e955e8de9750ee81f4e9afc45f1f44fc09aac32186"
+    },
+    "tipping": {
+      "hash": "0x40ed069beafe7db917bd4089599f5e1807805250321f20d576046fa8a5642e6c",
+      "explorer": "https://scan.bohr.life/tx/0x40ed069beafe7db917bd4089599f5e1807805250321f20d576046fa8a5642e6c"
+    },
+    "withdrawal": {
+      "hash": "0xf49f63332bbd40c7901a5afd16d270b55465c92ea18c03e62b7ae3dc8e3e358a",
+      "explorer": "https://scan.bohr.life/tx/0xf49f63332bbd40c7901a5afd16d270b55465c92ea18c03e62b7ae3dc8e3e358a"
+    }
+  },
+  "verificationSummary": {
+    "creatorRegistered": true,
+    "totalTiersCreated": 2,
+    "subscriptionVerified": true,
+    "renewalExtendedPaidUntil": true,
+    "upgradeSwitchedTier": true,
+    "cancellationRetainedAccess": true,
+    "tipRecorded": true,
+    "earningsWithdrawn": true
+  }
+}

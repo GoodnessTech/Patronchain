@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Space Grotesk', sans-serif;
+  color: #121416;
+  background: #f4f1eb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; background: #f4f1eb; }
+button, input, textarea, select { font: inherit; }
+button { cursor: pointer; }
+.mono { font-family: 'DM Mono', monospace; }
+.grid-paper {
+  background-color: #f4f1eb;
+  background-image: linear-gradient(#d9d8d2 1px, transparent 1px), linear-gradient(90deg, #d9d8d2 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.grid-paper-dark {
+  background-color: #111416;
+  background-image: linear-gradient(#262d30 1px, transparent 1px), linear-gradient(90deg, #262d30 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.shadow-brutal { box-shadow: 5px 5px 0 #121416; }
+.shadow-brutal-sm { box-shadow: 3px 3px 0 #121416; }
+::selection { background: #ffda24; color: #121416; }

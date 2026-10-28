@@ -1,0 +1,21 @@
+{
+  "network": "botchain-testnet",
+  "networkName": "BOT Chain Testnet (Bohr)",
+  "chainId": 968,
+  "rpc": "https://rpc.bohr.life",
+  "explorer": "https://scan.bohr.life",
+  "contractName": "PatronChain",
+  "contractAddress": "0xb1ceb34818617a5b59c0d6ca98e2c4481b8a845f",
+  "deploymentTransactionHash": "0xe9e3579cf34f3217547f396cff4e15d031ed1d1f5bb07b114ccf5592e4504300",
+  "deploymentBlockNumber": 28441836,
+  "gasUsed": "2961373",
+  "deployerAddress": "0x34090545BD562b0bE1Cdc855F7cA9beE4566CE51",
+  "treasuryAddress": "0x34090545BD562b0bE1Cdc855F7cA9beE4566CE51",
+  "platformFeeBps": 250,
+  "compilerVersion": "0.8.24",
+  "deployedAt": "2026-10-28T12:34:24.895Z",
+  "explorerLinks": {
+    "contract": "https://scan.bohr.life/address/0xb1ceb34818617a5b59c0d6ca98e2c4481b8a845f",
+    "tx": "https://scan.bohr.life/tx/0xe9e3579cf34f3217547f396cff4e15d031ed1d1f5bb07b114ccf5592e4504300"
+  }
+}
