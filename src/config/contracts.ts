@@ -1488,11 +1488,15 @@ export const PATRONCHAIN_ABI = [
   }
 ] as const;
 
+export const PATRONCHAIN_MAINNET_ADDRESS: `0x${string}` =
+  (import.meta.env?.VITE_PATRONCHAIN_CONTRACT_ADDRESS as `0x${string}`) ||
+  '0xa5590be3e48dd445fa871fd813bce8f253a85439';
+
 export const CONTRACT_ADDRESSES: Record<number, `0x${string}`> = {
-  968: ((import.meta.env?.VITE_PATRONCHAIN_TESTNET_ADDRESS as `0x${string}`) || '0xb1ceb34818617a5b59c0d6ca98e2c4481b8a845f'),
-  677: ((import.meta.env?.VITE_PATRONCHAIN_MAINNET_ADDRESS as `0x${string}`) || '0x0000000000000000000000000000000000000000'),
+  677: PATRONCHAIN_MAINNET_ADDRESS,
 };
 
-export function getPatronChainAddress(chainId: number = 968): `0x${string}` {
-  return CONTRACT_ADDRESSES[chainId] || CONTRACT_ADDRESSES[968];
+export function getPatronChainAddress(_chainId: number = 677): `0x${string}` {
+  return PATRONCHAIN_MAINNET_ADDRESS;
 }
+

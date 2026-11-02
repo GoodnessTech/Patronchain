@@ -22,21 +22,21 @@ export class VerificationService {
   }
 
   /**
-   * Authoritative on-chain membership verification.
+   * Authoritative on-chain membership verification on BOT Chain Mainnet.
    * Can be invoked by external applications, creators, and supporters.
    */
   public async verify(
     creatorAddress: string,
     supporterAddress: string,
-    chainId: 968 | 677 = 968
+    chainId: number = 677
   ): Promise<ExtendedVerificationResult> {
     const creator = getAddress(creatorAddress) as `0x${string}`;
     const supporter = getAddress(supporterAddress) as `0x${string}`;
-    const client: PublicClient = walletService.getPublicClient(chainId);
+    const client: PublicClient = walletService.getPublicClient(677);
     const contractAddress = getPatronChainAddress(chainId);
 
     if (!contractAddress) {
-      throw new Error(`PatronChain contract not configured for chain ID ${chainId}`);
+      throw new Error(`PatronChain contract not configured for BOT Chain Mainnet (Chain ID 677)`);
     }
 
     const data = (await client.readContract({

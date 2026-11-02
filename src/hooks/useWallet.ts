@@ -10,15 +10,15 @@ export function useWallet() {
   const [error, setError] = useState<string | null>(null);
 
   const isConnected = !!address;
-  const isCorrectNetwork = chainId === 968; // BOT Chain Testnet
+  const isCorrectNetwork = chainId === 677; // BOT Chain Mainnet
 
   const refreshBalance = useCallback(async (targetAddr?: `0x${string}`, targetChainId?: number) => {
     const addr = targetAddr || address;
-    const cid = targetChainId || chainId || 968;
+    const cid = targetChainId || chainId || 677;
     if (!addr) return;
 
     try {
-      const { wei, bot } = await walletService.getBalance(addr, (cid === 677 ? 677 : 968));
+      const { wei, bot } = await walletService.getBalance(addr, (cid === 677 ? 677 : 677));
       setBalanceBot(bot);
       setBalanceWei(wei);
     } catch (err: any) {
@@ -48,22 +48,6 @@ export function useWallet() {
     setBalanceBot('0.0000');
     setBalanceWei(0n);
   }, []);
-
-  const switchToTestnet = useCallback(async () => {
-    setIsLoading(true);
-    setError(null);
-    try {
-      await walletService.switchToTestnet();
-      const cid = await walletService.getChainId();
-      setChainId(cid);
-      if (address) await refreshBalance(address, cid);
-    } catch (err: any) {
-      setError(err?.message || 'Failed to switch network');
-      throw err;
-    } finally {
-      setIsLoading(false);
-    }
-  }, [address, refreshBalance]);
 
   const switchToMainnet = useCallback(async () => {
     setIsLoading(true);
@@ -131,7 +115,6 @@ export function useWallet() {
     error,
     connect,
     disconnect,
-    switchToTestnet,
     switchToMainnet,
     refreshBalance,
   };

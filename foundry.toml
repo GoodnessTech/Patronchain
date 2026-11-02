@@ -10,9 +10,7 @@ optimizer_runs = 200
 fs_permissions = [{ access = "read-write", path = "./" }]
 
 [rpc_endpoints]
-botchain_testnet = "https://rpc.bohr.life"
 botchain_mainnet = "https://rpc.botchain.ai"
 
 [etherscan]
-botchain_testnet = { key = "none", url = "https://scan.bohr.life/api" }
 botchain_mainnet = { key = "none", url = "https://scan.botchain.ai/api" }

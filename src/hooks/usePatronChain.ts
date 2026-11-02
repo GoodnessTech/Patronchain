@@ -31,7 +31,7 @@ export function usePatronChain(address: `0x${string}` | null, chainId: number | 
 
     setLoading(true);
     try {
-      const cid = chainId === 677 ? 677 : 968;
+      const cid = 677;
 
       const registered = await patronChainService.isCreatorRegistered(address, cid);
       setIsRegistered(registered);
@@ -194,7 +194,7 @@ export function usePatronChain(address: `0x${string}` | null, chainId: number | 
     creatorAddress: string,
     supporterAddress: string
   ): Promise<ExtendedVerificationResult> => {
-    const cid = chainId === 677 ? 677 : 968;
+    const cid = 677;
     return verificationService.verify(creatorAddress, supporterAddress, cid);
   };
 

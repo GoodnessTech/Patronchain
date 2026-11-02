@@ -1,4 +1,4 @@
-export type NetworkName = 'testnet' | 'mainnet';
+export type NetworkName = 'mainnet';
 
 export interface NetworkConfig {
   name: NetworkName;
@@ -28,13 +28,6 @@ export interface WalletAdapter {
 }
 
 export const networks: Record<NetworkName, NetworkConfig> = {
-  testnet: {
-    name: 'testnet',
-    chainId: 968,
-    rpcUrl: 'https://rpc.bohr.life',
-    explorerUrl: 'https://scan.bohr.life',
-    currency: 'BOT',
-  },
   mainnet: {
     name: 'mainnet',
     chainId: 677,

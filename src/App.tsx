@@ -116,13 +116,13 @@ function NetworkBanner({
       <div className="border-b-2 border-[#121416] bg-[#f36bb7] px-4 py-2.5 text-xs font-bold text-[#121416]">
         <div className="mx-auto flex max-w-[1440px] items-center justify-between">
           <span className="flex items-center gap-2">
-            <CircleAlert size={16} /> Connected to wrong network (Chain {chainId}). PatronChain lives on BOT Chain Testnet (Chain ID 968).
+            <CircleAlert size={16} /> Connected to wrong network (Chain {chainId}). PatronChain lives on BOT Chain Mainnet (Chain ID 677).
           </span>
           <button
             onClick={onSwitch}
             className="border-2 border-[#121416] bg-[#ffda24] px-3 py-1 font-bold shadow-brutal-sm hover:bg-white"
           >
-            Switch to BOT Testnet
+            Switch to BOT Mainnet
           </button>
         </div>
       </div>
@@ -155,7 +155,7 @@ function Topbar({
           <button onClick={() => navigate('membership')} className="transition hover:text-[#0aa6bc]">Verify access</button>
         </nav>
         <div className="flex items-center gap-3">
-          <span className="mono hidden border border-[#aeb3ae] px-2 py-1 text-[10px] uppercase text-[#687070] lg:block">BOT Testnet · 968</span>
+          <span className="mono hidden border border-[#aeb3ae] px-2 py-1 text-[10px] uppercase text-[#687070] lg:block">BOT Mainnet · 677</span>
           <WalletButton
             address={address}
             balanceBot={balanceBot}
@@ -206,7 +206,7 @@ function ConnectModal({ onClose, onConnectBrowser }: { onClose: () => void; onCo
         </button>
       </div>
       <div className="mt-5 border-t border-[#c5c5bf] pt-4 text-center text-xs text-[#687070]">
-        BOT Chain Testnet · Chain ID 968 · Native BOT
+        BOT Chain Mainnet · Chain ID 677 · Native BOT
       </div>
     </Modal>
   );
@@ -221,7 +221,7 @@ function Footer() {
           <p className="mt-4 max-w-xs text-sm text-[#687070]">Memberships that live on-chain.</p>
           <div className="mt-4 flex items-center gap-2">
             <span className="inline-block h-2.5 w-2.5 rounded-full bg-emerald-500" />
-            <span className="mono text-xs text-[#687070]">BOT Chain Testnet (Bohr) · 968</span>
+            <span className="mono text-xs text-[#687070]">BOT Chain Mainnet · 677</span>
           </div>
         </div>
         <div className="grid grid-cols-2 gap-x-14 gap-y-3 text-sm">
@@ -239,7 +239,7 @@ function Footer() {
       </div>
       <div className="mx-auto mt-12 max-w-[1440px] border-t border-[#c5c5bf] pt-5 text-xs text-[#687070] flex flex-col sm:flex-row justify-between gap-3">
         <div>© 2026 PatronChain. Built for open membership infrastructure.</div>
-        <div>Authoritative Contract: <a href="https://scan.bohr.life/address/0xb1ceb34818617a5b59c0d6ca98e2c4481b8a845f" target="_blank" rel="noreferrer" className="underline hover:text-[#0aa6bc]">0xb1ceb3…a845f</a></div>
+        <div>Authoritative Contract: <a href="https://scan.botchain.ai/address/0xa5590be3e48dd445fa871fd813bce8f253a85439" target="_blank" rel="noreferrer" className="underline hover:text-[#0aa6bc]">0xa5590b…85439</a></div>
       </div>
     </footer>
   );
@@ -430,7 +430,7 @@ function SubscribeModal({
         </div>
 
         <div className="text-[11px] text-[#687070] leading-4">
-          By confirming, you will broadcast an on-chain transaction to BOT Chain testnet. A time-bound entitlement will be written to the PatronChain contract.
+          By confirming, you will broadcast an on-chain transaction to BOT Chain Mainnet. A time-bound entitlement will be written to the PatronChain contract.
         </div>
 
         <div className="flex justify-end gap-3 pt-2">
@@ -617,7 +617,7 @@ function MembershipVerificationWidget() {
     setVerError(null);
     setResult(null);
     try {
-      const res = await verificationService.verify(creatorInput.trim(), supporterInput.trim(), 968);
+      const res = await verificationService.verify(creatorInput.trim(), supporterInput.trim(), 677);
       setResult(res);
     } catch (err: any) {
       setVerError(err?.message || 'Verification failed. Check wallet addresses.');
@@ -748,7 +748,7 @@ function ProductPreview() {
               <h3 className="text-2xl font-bold tracking-[-.05em]">Build your circle.</h3>
             </div>
             <span className="hidden border-2 border-[#121416] bg-[#19c9df] px-2 py-1 text-[9px] font-bold uppercase sm:block">
-              BOT testnet · 968
+              BOT Mainnet · 677
             </span>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
@@ -774,7 +774,7 @@ function ProductPreview() {
             </div>
           </div>
           <div className="mt-3 border-2 border-dashed border-[#7b8180] p-4 text-center text-xs text-[#687070]">
-            Verified on BOT Chain Testnet: <span className="mono font-bold">0xb1ceb3…a845f</span>
+            Verified on BOT Chain Mainnet: <span className="mono font-bold">0xa5590b…85439</span>
           </div>
         </div>
       </div>
@@ -970,7 +970,7 @@ function DashboardShell({
         </div>
         <div className="flex items-center gap-3">
           <span className="mono hidden border border-[#aeb3ae] px-2 py-1 text-[10px] uppercase text-[#687070] sm:block">
-            BOT Testnet · 968
+            BOT Mainnet · 677
           </span>
           <WalletButton
             address={address}
@@ -1209,7 +1209,7 @@ function Overview({
             </button>
           </div>
           <div className="mt-10 border-t border-[#c5c5bf] pt-4 text-xs leading-5 text-[#687070]">
-            All metrics populate authoritatively from contract <span className="mono font-bold">0xb1ceb3…a845f</span> on BOT Chain testnet.
+            All metrics populate authoritatively from contract <span className="mono font-bold">0xa5590b…85439</span> on BOT Chain Mainnet.
           </div>
         </div>
       </div>
@@ -1403,7 +1403,7 @@ function Payments({ history }: { history: any[] }) {
       <PageHeader
         eyebrow="Creator workspace / money"
         title="Payment history."
-        body="An auditable record of subscriptions, renewals, upgrades, tips and withdrawals from BOT Chain testnet."
+        body="An auditable record of subscriptions, renewals, upgrades, tips and withdrawals from BOT Chain Mainnet."
       />
 
       <div className="border-2 border-[#121416] bg-[#f4f1eb]">
@@ -1489,7 +1489,7 @@ function Explore({
 }) {
   const [query, setQuery] = useState('');
 
-  // Real verified creator on testnet
+  // Real verified creator on BOT Chain Mainnet
   const sampleCreator = '0x34090545BD562b0bE1Cdc855F7cA9beE4566CE51';
 
   const sampleTiers: MembershipTier[] = [
@@ -1538,7 +1538,7 @@ function Explore({
         <PageHeader
           eyebrow="The open network"
           title="Discover memberships."
-          body="Find and support verified on-chain communities on BOT Chain testnet."
+          body="Find and support verified on-chain communities on BOT Chain Mainnet."
         />
 
         <div className="mb-8 flex max-w-xl items-center gap-3 border-2 border-[#121416] bg-white px-4 py-3 shadow-brutal-sm">
@@ -1793,7 +1793,7 @@ function MyMemberships({
   useEffect(() => {
     if (address) {
       setLoading(true);
-      verificationService.verify(creatorAddr, address, 968)
+      verificationService.verify(creatorAddr, address, 677)
         .then((res) => setMembershipData(res))
         .catch(console.warn)
         .finally(() => setLoading(false));
@@ -1957,7 +1957,7 @@ function App() {
     isCorrectNetwork,
     connect,
     disconnect,
-    switchToTestnet,
+    switchToMainnet,
     refreshBalance,
   } = useWallet();
 
@@ -2198,7 +2198,7 @@ function App() {
       <NetworkBanner
         chainId={chainId}
         isCorrectNetwork={isCorrectNetwork}
-        onSwitch={switchToTestnet}
+        onSwitch={switchToMainnet}
       />
 
       {/* Global Notification Toast */}
@@ -2215,7 +2215,7 @@ function App() {
                 <strong className="block text-sm font-bold">{notification.message}</strong>
                 {notification.txHash && (
                   <a
-                    href={getExplorerTxUrl(notification.txHash, 968)}
+                    href={getExplorerTxUrl(notification.txHash, 677)}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-1 mt-1 text-xs text-[#0aa6bc] font-bold hover:underline"

@@ -1,6 +1,14 @@
-import { createPublicClient, http, formatEther, type PublicClient, type WalletClient, createWalletClient, custom } from 'viem';
-import { botchainTestnet, botchainMainnet, isSupportedChain, type SupportedChainId } from '../config/chains';
-import { ENVIRONMENTS, type EnvironmentName } from '../config/environments';
+import {
+  createPublicClient,
+  http,
+  formatEther,
+  type PublicClient,
+  type WalletClient,
+  createWalletClient,
+  custom,
+} from 'viem';
+import { botchainMainnet, DEFAULT_CHAIN_ID, type SupportedChainId } from '../config/chains';
+import { type EnvironmentName } from '../config/environments';
 
 export interface WalletState {
   address: `0x${string}` | null;
@@ -31,11 +39,10 @@ export class WalletService {
     return null;
   }
 
-  public getPublicClient(chainId: SupportedChainId = 968): PublicClient {
-    const chain = chainId === 677 ? botchainMainnet : botchainTestnet;
+  public getPublicClient(_chainId: SupportedChainId = DEFAULT_CHAIN_ID): PublicClient {
     return createPublicClient({
-      chain,
-      transport: http(),
+      chain: botchainMainnet,
+      transport: http(botchainMainnet.rpcUrls.default.http[0]),
     });
   }
 
@@ -44,7 +51,7 @@ export class WalletService {
     if (!ethereum) return null;
 
     return createWalletClient({
-      chain: botchainTestnet,
+      chain: botchainMainnet,
       transport: custom(ethereum),
     });
   }
@@ -65,52 +72,20 @@ export class WalletService {
 
   public async getChainId(): Promise<number> {
     const ethereum = this.getEthereum();
-    if (!ethereum) return 968;
+    if (!ethereum) return DEFAULT_CHAIN_ID;
 
     const chainIdHex = await ethereum.request({ method: 'eth_chainId' });
     return parseInt(chainIdHex, 16);
   }
 
-  public async getBalance(address: `0x${string}`, chainId: SupportedChainId = 968): Promise<{ wei: bigint; bot: string }> {
-    const client = this.getPublicClient(chainId);
+  public async getBalance(
+    address: `0x${string}`,
+    _chainId: SupportedChainId = DEFAULT_CHAIN_ID
+  ): Promise<{ wei: bigint; bot: string }> {
+    const client = this.getPublicClient();
     const balance = await client.getBalance({ address });
     const formatted = parseFloat(formatEther(balance)).toFixed(4);
     return { wei: balance, bot: formatted };
-  }
-
-  public async switchToTestnet(): Promise<void> {
-    const ethereum = this.getEthereum();
-    if (!ethereum) throw new Error('No wallet available');
-
-    const testnetHex = '0x3c8'; // 968 in hex
-    try {
-      await ethereum.request({
-        method: 'wallet_switchEthereumChain',
-        params: [{ chainId: testnetHex }],
-      });
-    } catch (switchError: any) {
-      // Error code 4902 indicates that the chain has not been added to the wallet
-      if (switchError.code === 4902 || switchError?.data?.originalError?.code === 4902) {
-        await ethereum.request({
-          method: 'wallet_addEthereumChain',
-          params: [
-            {
-              chainId: testnetHex,
-              chainName: 'BOT Chain Testnet (Bohr)',
-              nativeCurrency: {
-                name: 'BOT',
-                symbol: 'BOT',
-                decimals: 18,
-              },
-              rpcUrls: ['https://rpc.bohr.life'],
-              blockExplorerUrls: ['https://scan.bohr.life'],
-            },
-          ],
-        });
-      } else {
-        throw switchError;
-      }
-    }
   }
 
   public async switchToMainnet(): Promise<void> {
@@ -136,8 +111,8 @@ export class WalletService {
                 symbol: 'BOT',
                 decimals: 18,
               },
-              rpcUrls: ['https://rpc.botchain.ai'],
-              blockExplorerUrls: ['https://scan.botchain.ai'],
+              rpcUrls: [botchainMainnet.rpcUrls.default.http[0]],
+              blockExplorerUrls: [botchainMainnet.blockExplorers.default.url],
             },
           ],
         });

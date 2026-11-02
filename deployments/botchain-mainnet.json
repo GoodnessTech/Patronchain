@@ -1,0 +1,26 @@
+{
+  "network": "botchain-mainnet",
+  "networkName": "BOT Chain Mainnet",
+  "chainId": 677,
+  "contractName": "PatronChain",
+  "contractAddress": "0xa5590be3e48dd445fa871fd813bce8f253a85439",
+  "deploymentTransactionHash": "0x54805fad8932be138b9e35a1bce166b17fd919dc7c31d02a1bbf94755723593d",
+  "deploymentBlockNumber": "28825531",
+  "gasUsed": "2961373",
+  "effectiveGasPrice": "20000000000",
+  "totalGasSpentBot": "0.05922746",
+  "deployerAddress": "0x34090545BD562b0bE1Cdc855F7cA9beE4566CE51",
+  "ownerAddress": "0x34090545BD562b0bE1Cdc855F7cA9beE4566CE51",
+  "treasuryAddress": "0x34090545BD562b0bE1Cdc855F7cA9beE4566CE51",
+  "platformFeeBps": 250,
+  "compilerVersion": "0.8.24",
+  "optimizer": {
+    "enabled": true,
+    "runs": 200
+  },
+  "deployedAt": "2026-11-02T07:13:07.286Z",
+  "explorerLinks": {
+    "contract": "https://scan.botchain.ai/address/0xa5590be3e48dd445fa871fd813bce8f253a85439",
+    "tx": "https://scan.botchain.ai/tx/0x54805fad8932be138b9e35a1bce166b17fd919dc7c31d02a1bbf94755723593d"
+  }
+}

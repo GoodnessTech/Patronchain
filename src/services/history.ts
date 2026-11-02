@@ -1,6 +1,6 @@
 import { type PublicClient, formatEther, parseAbiItem, getAddress } from 'viem';
 import { walletService } from './wallet';
-import { getPatronChainAddress, PATRONCHAIN_ABI } from '../config/contracts';
+import { getPatronChainAddress } from '../config/contracts';
 import { getExplorerTxUrl } from '../config/environments';
 import type { BlockchainTransaction } from '../types/transaction';
 
@@ -17,16 +17,17 @@ export class HistoryService {
   }
 
   /**
-   * Query historical contract events from BOT Chain testnet.
+   * Query historical contract events on BOT Chain Mainnet.
    * Pulls real blockchain events for Subscribed, Renewed, Upgraded, Cancelled, Tipped, and Withdrawn.
+   * If eth_getLogs is restricted on public RPC endpoints, gracefully handles restrictions.
    */
   public async getCreatorEvents(
     creatorAddress: string,
-    chainId: 968 | 677 = 968,
-    fromBlock: bigint = 28441800n
+    chainId: number = 677,
+    fromBlock: bigint = 28825531n // Deployed block on BOT Chain Mainnet
   ): Promise<BlockchainTransaction[]> {
     const creator = getAddress(creatorAddress) as `0x${string}`;
-    const client: PublicClient = walletService.getPublicClient(chainId);
+    const client: PublicClient = walletService.getPublicClient(677);
     const contractAddress = getPatronChainAddress(chainId);
 
     if (!contractAddress || contractAddress === '0x0000000000000000000000000000000000000000') {
@@ -60,7 +61,7 @@ export class HistoryService {
           feeWei: log.args.fee,
           netAmountWei: log.args.netAmount,
           paidUntil: Number(log.args.paidUntil),
-          explorerUrl: getExplorerTxUrl(log.transactionHash!, chainId),
+          explorerUrl: getExplorerTxUrl(log.transactionHash!, 677),
         });
       }
 
@@ -88,7 +89,7 @@ export class HistoryService {
           feeWei: log.args.fee,
           netAmountWei: log.args.netAmount,
           paidUntil: Number(log.args.newPaidUntil),
-          explorerUrl: getExplorerTxUrl(log.transactionHash!, chainId),
+          explorerUrl: getExplorerTxUrl(log.transactionHash!, 677),
         });
       }
 
@@ -116,7 +117,7 @@ export class HistoryService {
           feeWei: log.args.fee,
           netAmountWei: log.args.netAmount,
           paidUntil: Number(log.args.newPaidUntil),
-          explorerUrl: getExplorerTxUrl(log.transactionHash!, chainId),
+          explorerUrl: getExplorerTxUrl(log.transactionHash!, 677),
         });
       }
 
@@ -140,7 +141,7 @@ export class HistoryService {
           supporter: log.args.supporter,
           tierId: Number(log.args.tierId),
           paidUntil: Number(log.args.paidUntil),
-          explorerUrl: getExplorerTxUrl(log.transactionHash!, chainId),
+          explorerUrl: getExplorerTxUrl(log.transactionHash!, 677),
         });
       }
 
@@ -166,7 +167,7 @@ export class HistoryService {
           grossAmountBot: formatEther(log.args.grossAmount || 0n),
           feeWei: log.args.fee,
           netAmountWei: log.args.netAmount,
-          explorerUrl: getExplorerTxUrl(log.transactionHash!, chainId),
+          explorerUrl: getExplorerTxUrl(log.transactionHash!, 677),
         });
       }
 
@@ -188,11 +189,11 @@ export class HistoryService {
           grossAmountWei: log.args.amount,
           grossAmountBot: formatEther(log.args.amount || 0n),
           netAmountWei: log.args.amount,
-          explorerUrl: getExplorerTxUrl(log.transactionHash!, chainId),
+          explorerUrl: getExplorerTxUrl(log.transactionHash!, 677),
         });
       }
     } catch (err) {
-      console.warn('Could not query all historical event logs:', err);
+      console.warn('Notice: eth_getLogs not supported or restricted on current RPC provider:', err);
     }
 
     // Sort descending by block number

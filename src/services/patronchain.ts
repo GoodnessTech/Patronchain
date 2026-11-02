@@ -43,9 +43,9 @@ export class PatronChainService {
     if (!ethereum) throw new Error('No Web3 wallet detected');
 
     const chainId = await walletService.getChainId();
-    if (chainId !== 968 && chainId !== 677) {
+    if (chainId !== 677) {
       throw new Error(
-        `Connected to unsupported chain ${chainId}. Please switch to BOT Chain Testnet (Chain ID 968).`
+        `Connected to unsupported chain ${chainId}. Please switch to BOT Chain Mainnet (Chain ID 677).`
       );
     }
 
@@ -59,7 +59,7 @@ export class PatronChainService {
     if (!walletClient) throw new Error('Failed to initialize wallet client');
 
     const contractAddress = await this.getContractAddress(chainId);
-    const publicClient = walletService.getPublicClient(chainId as 968 | 677);
+    const publicClient = walletService.getPublicClient(677);
 
     return { walletClient, contractAddress, account, publicClient, chainId };
   }
@@ -100,7 +100,7 @@ export class PatronChainService {
     return hash;
   }
 
-  public async getCreator(creatorAddress: string, chainId: 968 | 677 = 968): Promise<CreatorProfile> {
+  public async getCreator(creatorAddress: string, chainId: number = 677): Promise<CreatorProfile> {
     const creator = getAddress(creatorAddress) as `0x${string}`;
     const client = walletService.getPublicClient(chainId);
     const contractAddress = await this.getContractAddress(chainId);
@@ -121,7 +121,7 @@ export class PatronChainService {
     };
   }
 
-  public async isCreatorRegistered(creatorAddress: string, chainId: 968 | 677 = 968): Promise<boolean> {
+  public async isCreatorRegistered(creatorAddress: string, chainId: number = 677): Promise<boolean> {
     const creator = getAddress(creatorAddress) as `0x${string}`;
     const client = walletService.getPublicClient(chainId);
     const contractAddress = await this.getContractAddress(chainId);
@@ -205,7 +205,7 @@ export class PatronChainService {
     return hash;
   }
 
-  public async getCreatorTiers(creatorAddress: string, chainId: 968 | 677 = 968): Promise<MembershipTier[]> {
+  public async getCreatorTiers(creatorAddress: string, chainId: number = 677): Promise<MembershipTier[]> {
     const creator = getAddress(creatorAddress) as `0x${string}`;
     const client = walletService.getPublicClient(chainId);
     const contractAddress = await this.getContractAddress(chainId);
@@ -354,7 +354,7 @@ export class PatronChainService {
     return hash;
   }
 
-  public async getCreatorFinancials(creatorAddress: string, chainId: 968 | 677 = 968): Promise<CreatorFinancials> {
+  public async getCreatorFinancials(creatorAddress: string, chainId: number = 677): Promise<CreatorFinancials> {
     const creator = getAddress(creatorAddress) as `0x${string}`;
     const client = walletService.getPublicClient(chainId);
     const contractAddress = await this.getContractAddress(chainId);
@@ -374,7 +374,7 @@ export class PatronChainService {
     };
   }
 
-  public async getPlatformFeeBps(chainId: 968 | 677 = 968): Promise<number> {
+  public async getPlatformFeeBps(chainId: number = 677): Promise<number> {
     const client = walletService.getPublicClient(chainId);
     const contractAddress = await this.getContractAddress(chainId);
 
